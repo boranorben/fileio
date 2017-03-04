@@ -4,6 +4,7 @@ Coparing the elapesed time in copying the InputStream to the OutputStream in dif
 ## Results and Explanation
 ### Results
 I ran the task by HP Pavilion 14, and got this result:
+
 |Task|Elapesed Time (sec)|
 |:--:|:-----------------:|
 |Copy one byte at a time     |9.481917|
@@ -11,6 +12,7 @@ I ran the task by HP Pavilion 14, and got this result:
 |Copy using a 4KB byte array |0.005027|
 |Copy using a 64KB byte array |0.001452|
 |Copy one line at a time     |0.080724|
+
 ### Explanation
 `InputStream` is the raw method of getting information from a resource. It grabs the data byte by byte without performing any kind of translation.
 - Its methods that used in FileUtil Class
