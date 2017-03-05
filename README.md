@@ -27,8 +27,11 @@ And the reason why *copying with an array of char* is faster than *copying one l
 
 ```byte -> byte[] -> char -> char[] -> String```
 
-##### In conclusion, 
+### Conclusion, 
 **Copying one byte at a time** takes the longest time because it has to read and write every byte in the file.
+
 **Copying using a byte array** takes more or less time depending on the size of byte array. But it is still much more faster than the first one surely.
+
 **Copying one line at a time** has to convert to a `String` so it takes longer time than the second one.
+
 **Copying with an array of char** has the same reason with the third one but it just only converts to `char[]` not to `String`.
