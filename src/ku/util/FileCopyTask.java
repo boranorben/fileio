@@ -133,6 +133,7 @@ public class FileCopyTask implements Runnable {
 		final String output4KB = "filecopy_4KB.txt";
 		final String output64KB = "filecopy_64KB.txt";
 		final String outputoneLine = "filecopy_oneLine.txt";
+		final String outputcharArray = "filecopy_charArray.txt";
 		final int oneKB = 1024;
 		final int fourKB = 4*oneKB;
 		final int sixtyfourKB = 64*oneKB;
@@ -204,12 +205,26 @@ public class FileCopyTask implements Runnable {
 			}
 		};
 		
+		FileCopyTask taskChar = new FileCopyTask(inputFilename,outputcharArray) {
+		
+		@Override
+		public void run() {
+			FileUtil.ccopy(in, out, arraySize);
+		}
+		
+		@Override 
+		public String toString() {
+			return "Copy the file using BufferedReader and BufferedWriter with an array of char";
+		}
+	};
+		
 		TaskTimer timer = new TaskTimer();
 		timer.measureAndPrint(taskByte);
 		timer.measureAndPrint(task_1_Block);
 		timer.measureAndPrint(task_4_Block);
 		timer.measureAndPrint(task_64_Block);
 		timer.measureAndPrint(taskBuffered);
+		timer.measureAndPrint(taskChar);
 	}
 	
 }

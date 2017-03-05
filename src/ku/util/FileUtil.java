@@ -20,7 +20,7 @@ public class FileUtil {
 	 * Copy the InputStream to the OutputStream one byte at a time.
 	 * Both InputStram and OutputStream are closed when finished.
 	 * @param in is the InputStream to read
-	 * @param out is the OutputStram to writez
+	 * @param out is the OutputStram to write
 	 */
 	public static void copy ( InputStream in , OutputStream out ) {
 		int data;
@@ -87,4 +87,28 @@ public class FileUtil {
 		}
 	}
 	
+	/**
+	 * Copy the InputStram to the OutputStram using a BufferedReader to read the InoutStream,
+	 * and using BufferedWriter to write the OutputStream.
+	 * Both InputStram and OutputStream are closed when finished.
+	 * @param in is the InputStream
+	 * @param out is the OutputStram
+	 * @param blocksize of a char array
+	 */
+	public static void ccopy ( InputStream in , OutputStream out , int blocksize ) {
+		BufferedReader buffRead = new BufferedReader(new InputStreamReader(in));
+		BufferedWriter buffWrite = new BufferedWriter(new OutputStreamWriter(out));
+		char[] c = new char[blocksize];
+		int character;
+		try {
+			while ( (character = buffRead.read( c )) > 0 ) {
+				buffWrite.write( c );
+			}
+			buffRead.close();
+			buffWrite.close();
+		} catch (IOException e) {
+			throw new RuntimeException();
+		}
+		
+	}
 }
